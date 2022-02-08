@@ -71,10 +71,10 @@ function App() {
                 let tasksForTodolist = tasks;
 
                 if (tl.filter === "active") {
-                    tasksForTodolist = tasks.filter(t => t.isDone === false);
+                    tasksForTodolist = tasks.filter(t => !t.isDone);
                 }
                 if (tl.filter === "completed") {
-                    tasksForTodolist = tasks.filter(t => t.isDone === true);
+                    tasksForTodolist = tasks.filter(t => t.isDone);
                 }
 
                 return (
