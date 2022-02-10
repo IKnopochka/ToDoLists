@@ -55,9 +55,12 @@ function App() {
     //let [filter, setFilter] = useState<FilterValuesType>("all");
 
 
-    function removeTask(id: string) {
+    function removeTask(todolistId: string ,id: string) {
         /*let filteredTasks = tasks.filter(t => t.id !== id);
         setTasks(filteredTasks);*/
+        setTasks({...tasks, [todolistId]:tasks[todolistId]})
+
+
     }
 
     function addTask(title: string) {
@@ -115,15 +118,6 @@ function App() {
                     />
                 )
             })}
-
-            {/*<Todolist title="What to learn"
-                      tasks={tasksForTodolist}
-                      removeTask={removeTask}
-                      changeFilter={changeFilter}
-                      addTask={addTask}
-                      changeTaskStatus={changeStatus}
-                      filter={filter}
-            />*/}
         </div>
     );
 }
