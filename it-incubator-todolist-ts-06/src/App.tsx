@@ -55,6 +55,12 @@ function App() {
         setTasks({...tasks});
     }
 
+    function addTodolist (title: string) {
+        let newID = v1()
+        let newToDoList: TodolistType = {id: newID, title: title, filter: "all"}
+        setTodolists([newToDoList, ...todolists])
+    }
+
     function changeStatus(id: string, isDone: boolean, todolistId: string) {
         //достанем нужный массив по todolistId:
         let todolistTasks = tasks[todolistId];
@@ -106,7 +112,7 @@ function App() {
                         tasks={tasksForTodolist}
                         removeTask={removeTask}
                         changeFilter={changeFilter}
-                        addTask={addTask}
+                        callback={addTodolist}
                         changeTaskStatus={changeStatus}
                         filter={tl.filter}
                         removeTodolist={removeTodolist}
