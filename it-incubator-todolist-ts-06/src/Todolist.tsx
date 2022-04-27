@@ -1,5 +1,6 @@
 import React, {ChangeEvent, useState, KeyboardEvent} from 'react';
 import {FilterValuesType} from './App';
+import {AddItemForm} from "./components/AddItemForm";
 
 export type TaskType = {
     id: string
@@ -13,17 +14,17 @@ type PropsType = {
     tasks: Array<TaskType>
     removeTask: (taskId: string, todolistId: string) => void
     changeFilter: (value: FilterValuesType, todolistId: string) => void
-    addTask: (title: string, todolistId: string) => void
+    callback: () => void
     changeTaskStatus: (id: string, isDone: boolean, todolistId: string) => void
     removeTodolist: (id: string) => void
     filter: FilterValuesType
 }
 
 export function Todolist(props: PropsType) {
-    let [title, setTitle] = useState("")
-    let [error, setError] = useState<string | null>(null)
+    /*let [title, setTitle] = useState("")
+    let [error, setError] = useState<string | null>(null)*/
 
-    const addTask = () => {
+    /*const addTask = () => {
         let newTitle = title.trim();
         if (newTitle !== "") {
             props.addTask(newTitle, props.id);
@@ -31,9 +32,9 @@ export function Todolist(props: PropsType) {
         } else {
             setError("Title is required");
         }
-    }
+    }*/
 
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    /*const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
     }
 
@@ -42,7 +43,7 @@ export function Todolist(props: PropsType) {
         if (e.charCode === 13) {
             addTask();
         }
-    }
+    }*/
 
     const removeTodolist = () => props.removeTodolist(props.id)
 
@@ -54,7 +55,7 @@ export function Todolist(props: PropsType) {
         <h3> {props.title}
             <button onClick={removeTodolist}>x</button>
         </h3>
-        <div>
+        {/*<div>
             <input value={title}
                    onChange={onChangeHandler}
                    onKeyPress={onKeyPressHandler}
@@ -62,7 +63,11 @@ export function Todolist(props: PropsType) {
             />
             <button onClick={addTask}>+</button>
             {error && <div className="error-message">{error}</div>}
+        </div>*/}
+        <div>
+            <AddItemForm callback={props.callback} id={props.id}/>
         </div>
+
         <ul>
             {
                 props.tasks.map(t => {
