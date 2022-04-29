@@ -58,6 +58,8 @@ function App() {
 
     function addTodolist(title:string) {
         let newId = v1()
+        setTodolists([{id: newId, title: title, filter: "all"}, ...todolists])
+        setTasks({[newId]: []})
     }
 
     function changeStatus(id: string, isDone: boolean, todolistId: string) {
@@ -92,7 +94,7 @@ function App() {
 
     return (
         <div className="App">
-            <AddItemForm callback={}/>
+            <AddItemForm callback={addTodolist}/>
             {
                 todolists.map(tl => {
                     let allTodolistTasks = tasks[tl.id];
