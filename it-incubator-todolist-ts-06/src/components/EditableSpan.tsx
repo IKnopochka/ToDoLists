@@ -15,8 +15,8 @@ export const EditableSpan = (props: EditableSpanPropsType) => {
     let[edit, setEdit]= useState(false)
 
     const switchEdit = () => {
-
         setEdit(!edit)
+        props.callback(text)
     }
 
     return (
