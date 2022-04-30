@@ -100,6 +100,10 @@ function App() {
                 : m)})
     }
 
+    const updateTodolist = (todolistId: string, newTitle: string) => {
+        setTodolists(todolists.map(m => m.id === todolistId ? {...m, title:newTitle} : m))
+    }
+
     return (
         <div className="App">
             <AddItemForm callback={addTodolist}/>
@@ -127,6 +131,7 @@ function App() {
                         filter={tl.filter}
                         removeTodolist={removeTodolist}
                         updateTask={updateTask}
+                        updateTodolist={updateTodolist}
                     />
                 })
             }
