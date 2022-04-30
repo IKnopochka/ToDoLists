@@ -23,29 +23,6 @@ type PropsType = {
 }
 
 export function Todolist(props: PropsType) {
-    /*let [title, setTitle] = useState("")
-    let [error, setError] = useState<string | null>(null)*/
-
-    /*const addTask = () => {
-        let newTitle = title.trim();
-        if (newTitle !== "") {
-            props.addTask(newTitle, props.id);
-            setTitle("");
-        } else {
-            setError("Title is required");
-        }
-    }*/
-
-    /*const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.currentTarget.value)
-    }
-
-    const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-        setError(null);
-        if (e.charCode === 13) {
-            addTask();
-        }
-    }*/
 
     const removeTodolist = () => props.removeTodolist(props.id)
 
@@ -57,8 +34,8 @@ export function Todolist(props: PropsType) {
         props.addTask(newTitle, props.id)
     }
 
-    const addUpdateTaskHandler = () => {
-        props.updateTask
+    const addUpdateTaskHandler = (taskId: string, newText: string) => {
+        props.updateTask(props.id, taskId, newText)
     }
 
     return <div>
@@ -89,7 +66,7 @@ export function Todolist(props: PropsType) {
 
                     return <li key={t.id} className={t.isDone ? "is-done" : ""}>
                         <input type="checkbox" onChange={onChangeHandler} checked={t.isDone}/>
-                        <EditableSpan title={t.title} callback={() => addUpdateTaskHandler()}/>
+                        <EditableSpan title={t.title} callback={(newText) => addUpdateTaskHandler(t.id, newText)}/>
                         {/*<span>{t.title}</span>*/}
                         <button onClick={onClickHandler}>x</button>
                     </li>

@@ -2,6 +2,7 @@ import React, {ChangeEvent, useState} from 'react';
 
 type EditableSpanPropsType = {
     title: string
+    callback: (text: string) => void
 }
 
 export const EditableSpan = (props: EditableSpanPropsType) => {
