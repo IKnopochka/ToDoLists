@@ -93,6 +93,10 @@ function App() {
         setTasks({...tasks});
     }
 
+    const updateTask = (todolistId: string, taskId: string, newTitle: string) => {
+        console.log(newTitle)
+    }
+
     return (
         <div className="App">
             <AddItemForm callback={addTodolist}/>
@@ -119,6 +123,7 @@ function App() {
                         changeTaskStatus={changeStatus}
                         filter={tl.filter}
                         removeTodolist={removeTodolist}
+                        updateTask={updateTask}
                     />
                 })
             }
