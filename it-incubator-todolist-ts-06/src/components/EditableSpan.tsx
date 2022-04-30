@@ -1,9 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-export const EditableSpan = () => {
+type EditableSpanPropsType = {
+    title: string
+}
+
+export const EditableSpan = (props: EditableSpanPropsType) => {
+
+    let[edit, setEdit]= useState(false)
+
+    const switchEdit = () => {
+        setEdit(!edit)
+    }
+
     return (
-        <div>
-
-        </div>
+            edit ?<input value={props.title} autoFocus onBlur={switchEdit}/>:<span onDoubleClick={switchEdit}>{props.title}</span>
     );
 };
