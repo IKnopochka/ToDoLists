@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {ChangeEvent, useState} from 'react';
 
 type EditableSpanPropsType = {
     title: string
@@ -6,13 +6,21 @@ type EditableSpanPropsType = {
 
 export const EditableSpan = (props: EditableSpanPropsType) => {
 
+    let [text, setText] = useState(props.title)
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setText(e.currentTarget.value)
+    }
+
     let[edit, setEdit]= useState(false)
 
     const switchEdit = () => {
+
         setEdit(!edit)
     }
 
     return (
-            edit ?<input value={props.title} autoFocus onBlur={switchEdit}/>:<span onDoubleClick={switchEdit}>{props.title}</span>
+            edit
+                ?<input value={text} onChange={onChangeHandler} autoFocus onBlur={switchEdit}/>
+                :<span onDoubleClick={switchEdit}>{props.title}</span>
     );
 };
