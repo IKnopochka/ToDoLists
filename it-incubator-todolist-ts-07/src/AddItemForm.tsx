@@ -38,7 +38,7 @@ export function AddItemForm(props: AddItemFormPropsType) {
                className={error ? "error" : ""}
         />
         <Button variant="contained"
-                style={{maxWidth: '25px', maxHeight: '25px', minWidth: '25px', minHeight: '25px', backgroundColor: 'black', color: 'white'}}
+                style={{maxWidth: '25px', maxHeight: '25px', minWidth: '25px', minHeight: '25px', backgroundColor: 'purple', color: 'white'}}
                 onClick={addItem}>+</Button>
 
         {error && <div className="error-message">{error}</div>}
