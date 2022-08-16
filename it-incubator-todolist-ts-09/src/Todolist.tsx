@@ -4,7 +4,6 @@ import {AddItemForm} from './AddItemForm';
 import {EditableSpan} from './EditableSpan';
 import {Button, Checkbox, IconButton} from '@material-ui/core';
 import {Delete} from '@material-ui/icons';
-import {CheckBox} from "./components/CheckBox";
 
 export type TaskType = {
     id: string
@@ -41,9 +40,6 @@ export function Todolist(props: PropsType) {
     const onAllClickHandler = () => props.changeFilter("all", props.id);
     const onActiveClickHandler = () => props.changeFilter("active", props.id);
     const onCompletedClickHandler = () => props.changeFilter("completed", props.id);
-    const callbackHandler = (taskId: string, eventValue: boolean) => {
-        props.changeTaskStatus(taskId, eventValue, props.id);
-    }
 
     return <div>
         <h3> <EditableSpan value={props.title} onChange={changeTodolistTitle} />
@@ -66,13 +62,11 @@ export function Todolist(props: PropsType) {
 
 
                     return <div key={t.id} className={t.isDone ? "is-done" : ""}>
-                        {/*<Checkbox
+                        <Checkbox
                             checked={t.isDone}
                             color="primary"
                             onChange={onChangeHandler}
-                        />*/}
-                        {/*<input title={'checkbox'} onChange={onChangeHandler} checked={t.isDone}/>*/}
-                        <CheckBox callback={(event:boolean) => callbackHandler(t.id, event)} checked={t.isDone}/>
+                        />
 
                         <EditableSpan value={t.title} onChange={onTitleChangeHandler} />
                         <IconButton onClick={onClickHandler}>
@@ -82,7 +76,7 @@ export function Todolist(props: PropsType) {
                 })
             }
         </div>
-        <div style={{ paddingTop: "10px"}}>
+        <div>
             <Button variant={props.filter === 'all' ? 'outlined' : 'text'}
                     onClick={onAllClickHandler}
                     color={'default'}
