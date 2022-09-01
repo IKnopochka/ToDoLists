@@ -13,6 +13,8 @@ import {
     todolistsReducer
 } from "./state/todolists-reducer";
 import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducer} from "./state/tasks-reducer";
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "./state/store";
 
 export type FilterValuesType = "all" | "active" | "completed";
 export type TodolistType = {
@@ -27,7 +29,7 @@ export type TasksStateType = {
 
 
 function AppWithRedux () {
-    let todolistId1 = v1();
+    /*let todolistId1 = v1();
     let todolistId2 = v1();
 
     let [todolists, dispatchTodolists] = useReducer(todolistsReducer, [
@@ -44,7 +46,10 @@ function AppWithRedux () {
             {id: v1(), title: "Milk", isDone: true},
             {id: v1(), title: "React Book", isDone: true}
         ]
-    });
+    });*/
+
+    let todolists = useSelector<AppRootStateType, TodolistType[]>(state => state.todolists)
+    let tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
 
 
     function removeTask(id: string, todolistId: string) {
