@@ -5,6 +5,7 @@ import {EditableSpan} from './EditableSpan';
 import {Button, Checkbox, IconButton} from '@material-ui/core';
 import {Delete} from '@material-ui/icons';
 import TaskComponent from "./TaskComponent";
+import TaskWithRedux from "./TaskWithRedux";
 
 export type TaskType = {
     id: string
@@ -73,16 +74,18 @@ export const Todolist = memo((props: PropsType) => {
         </h3>
         <AddItemForm addItem={addTask}/>
         <div>
-            {
+            {/*{
                 tasksForTodolist.map(t => {
                         return <TaskComponent changeTaskTitle={changeTaskTitle}
                                               changeTaskStatus={changeTaskStatus}
                                               removeTask={removeTask}
                                               task={t}
                                               key={t.id}/>
-                    }
-                )
-            }
+
+                    })
+            }*/}
+            {tasksForTodolist.map(t => {return <TaskWithRedux todolistId={props.id} task={t} key={t.id}/>})}
+
         </div>
         <div style={{paddingTop: "10px"}}>
             <Button variant={props.filter === 'all' ? 'outlined' : 'text'}
