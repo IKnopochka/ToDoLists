@@ -26,13 +26,16 @@ export type TasksStateType = {
 
 function App() {
 
+    debugger
+
     const todolists = useSelector<AppRootStateType, Array<TodolistType>>(state => state.todolists)
     const tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
 
     const dispatch = useDispatch();
 
     function addTodolist(title: string) {
-        addTodolistAC(title)
+        debugger
+        dispatch(addTodolistAC(title))
     }
 
     return (
