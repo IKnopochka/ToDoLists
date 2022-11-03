@@ -19,19 +19,23 @@ export const Example_1 = () => {
     );
 };
 
-const Title = memo((props: { title: string }) => {
+const Title = (props: { title: string }) => {
     console.log('Title rendering')
     return <h3>{props.title}</h3>
-});
+};
 
 const Input = () => {
         console.log('input rendering')
 
         const [value, setValue] = useState('');
 
-        const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+        /*const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
             setValue(e.currentTarget.value);
-        }, [value]);
+        }, [value]);*/
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setValue(e.currentTarget.value);
+    }
 
         return (
             <input type="text" placeholder="Placeholder" value={value} onChange={handleChange}/>
