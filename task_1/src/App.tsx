@@ -15,6 +15,9 @@ const DATA_7: UserType[] = [
 ];
 
 export const App = () => {
+
+  console.log('App rendering')
+
   return (
     <Fragment>
       <Example_1 />
