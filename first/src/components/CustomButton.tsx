@@ -1,4 +1,4 @@
-import React, {FC, memo} from 'react';
+import React, {memo} from 'react';
 
 type PropsType = {
   title: string;
@@ -6,7 +6,7 @@ type PropsType = {
   onClick: () => void;
 };
 
-export const CustomButton: FC<PropsType> = memo(({title, isButtonDisabled, onClick}) => {
+export const CustomButton: React.FC<PropsType> = memo(({title, isButtonDisabled, onClick}) => {
   return (
     <div>
       <button disabled={isButtonDisabled} onClick={onClick}>

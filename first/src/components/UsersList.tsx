@@ -9,7 +9,7 @@ type PropsType = {
 export const UsersList: FC<PropsType> = memo(({users}) => {
   return (
     <>
-      {[].map(({id, name}) => <User key={id} id={id} name={name} />)}
+      {users.map(u => <User key={u.id} id={u.id} name={u.name} />)}
     </>
   );
 });

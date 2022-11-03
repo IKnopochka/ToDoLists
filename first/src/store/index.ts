@@ -9,10 +9,11 @@ declare global {
 
 const rootReducers = combineReducers({
   usersData: usersReducer,
-  userCount: usersCountReducer,
+  usersCount: usersCountReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 export const store: Store<RootStoreType> = createStore(rootReducers, composeEnhancers());
 
 export type RootStoreType = ReturnType<typeof rootReducers>

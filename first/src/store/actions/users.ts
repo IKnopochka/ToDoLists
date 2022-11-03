@@ -5,6 +5,6 @@ export const plusUserCount = () => ({
 }) as const;
 
 export const createUser = (user: UserType) => ({
-  type: 'СREATE_USER',
+  type: 'CREATE_USER',
   payload: user
 });
