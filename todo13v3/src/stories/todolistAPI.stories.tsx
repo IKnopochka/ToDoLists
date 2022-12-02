@@ -5,21 +5,10 @@ export default {
     title: 'API'
 }
 
-const idForTodolist = "e809767a-fd8b-4d7a-8b1c-18c3593b1951"
-const titleForTodolist = 'iridfvdfvna'
+const idForTodolist = "afd2b080-c228-41e1-a780-29cdf4e74823"
+const titleForTodolist = '1st'
 const idForTask = "2c7eebcc-5541-4396-bbf2-f6081c66b8f0"
 const titleForTask = 'cat mode on'
-const itemTask = {
-    todoListId: idForTodolist,
-    id: idForTask,
-    description: 'serjydtxhgfdb',
-    title: 'string',
-    completed: true,
-    status: 15754635,
-    priority:1345345,
-    startDate: 'str34543ing',
-    deadline: '345345ing'
-}
 
 //Todolists
 export const GetTodolists = () => {
