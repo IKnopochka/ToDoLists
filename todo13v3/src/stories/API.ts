@@ -52,7 +52,7 @@ export const todolistAPI = {
             .then(response => response.data)
     },
     createTodolist(title: string) {
-        return instance.post<ResponseTodolistType<{item: TodolistType}>>('todo-lists', {title})
+        return instance.post<ResponseTodolistType<{ item: TodolistType }>>('todo-lists', {title})
             .then(response => response.data)
     },
     deleteTodolist(todolistId: string) {
@@ -68,15 +68,15 @@ export const taskAPI = {
         return instance.get<ReturnGetTaskType>(`todo-lists/${todolistId}/tasks`)
             .then(response => response.data)
     },
-    createTask(todolistId: string,  title: string) {
-        return instance.post<ReturnPostDeletePutTaskType<{item: ItemTaskType}>>(`todo-lists/${todolistId}/tasks`, {title})
+    createTask(todolistId: string, title: string) {
+        return instance.post<ReturnPostDeletePutTaskType<{ item: ItemTaskType }>>(`todo-lists/${todolistId}/tasks`, {title})
             .then(response => response.data)
     },
     deleteTask(todolistId: string, taskId: string) {
         return instance.delete<ReturnPostDeletePutTaskType<{}>>(`todo-lists/${todolistId}/tasks/${taskId}`)
     },
-    updateTask(todolistId: string, taskId: string, title:string, description:string, completed: boolean, status: number, priority: number, startDate: string, deadline: string) {
-        return instance.put<ReturnPostDeletePutTaskType<{item: ItemTaskType}>>(`todo-lists/${todolistId}/tasks/${taskId}`,
+    updateTask(todolistId: string, taskId: string, title: string, description: string, completed: boolean, status: number, priority: number, startDate: string, deadline: string) {
+        return instance.put<ReturnPostDeletePutTaskType<{ item: ItemTaskType }>>(`todo-lists/${todolistId}/tasks/${taskId}`,
             {title, description, completed, status, priority, startDate, deadline})
             .then(response => response.data)
     }
