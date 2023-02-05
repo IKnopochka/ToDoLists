@@ -27,3 +27,13 @@
     color: white;
     font-size: 30px;
 }
+
+.navLink {
+    text-decoration: none;
+    color:  aquamarine;
+}
+
+.active {
+    text-decoration: underline;
+    color:  darkslategrey;
+}
