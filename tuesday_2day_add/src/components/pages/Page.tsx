@@ -6,7 +6,7 @@ import {Error404} from "./Error404";
 export const Page = (props: DataStateType) => {
     const param = useParams()
 
-    if (Number(param.id) > 2) return <Error404/>
+    if (Number(param.id) >= props.pages.length) return <Error404/>
 
     return (
         <div>
