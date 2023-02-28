@@ -1,5 +1,17 @@
-import { AddTodolistActionType, RemoveTodolistActionType, SetTodolistsActionType } from './todolists-reducer'
-import { TaskPriorities, TaskStatuses, TaskType, todolistsAPI, UpdateTaskModelType } from '../../api/todolists-api'
+import {
+    AddTodolistActionType,
+    clearDataAC,
+    RemoveTodolistActionType,
+    SetTodolistsActionType
+} from './todolists-reducer'
+import {
+    TaskPriorities,
+    TaskStatuses,
+    TaskType,
+    todolistsAPI,
+    TodolistType,
+    UpdateTaskModelType
+} from '../../api/todolists-api'
 import { Dispatch } from 'redux'
 import { AppRootStateType } from '../../app/store'
 import { SetAppErrorActionType, setAppStatusAC, SetAppStatusActionType } from '../../app/app-reducer'
@@ -26,6 +38,7 @@ export const tasksReducer = (state: TasksStateType = initialState, action: Actio
             delete copyState[action.id]
             return copyState
         case 'SET-TODOLISTS': {
+            debugger
             const copyState = {...state}
             action.todolists.forEach(tl => {
                 copyState[tl.id] = []
@@ -34,6 +47,9 @@ export const tasksReducer = (state: TasksStateType = initialState, action: Actio
         }
         case 'SET-TASKS':
             return {...state, [action.todolistId]: action.tasks}
+        case "CLEAR-DATA":
+            debugger
+            return {}
         default:
             return state
     }
@@ -53,6 +69,7 @@ export const setTasksAC = (tasks: Array<TaskType>, todolistId: string) => ({
     tasks,
     todolistId
 } as const)
+// export const clearTasksDataAC = (tasks: Array<TaskType>, todolistId: string) => ({type: 'CLEAR-TASKS-DATA', todolistId, tasks} as const)
 
 // thunks
 export const fetchTasksTC = (todolistId: string) => (dispatch: Dispatch<ActionsType | SetAppStatusActionType>) => {
@@ -142,4 +159,5 @@ type ActionsType =
     | RemoveTodolistActionType
     | SetTodolistsActionType
     | ReturnType<typeof setTasksAC>
+    | ReturnType<typeof clearDataAC>
 type ThunkDispatch = Dispatch<ActionsType | SetAppStatusActionType | SetAppErrorActionType>
